@@ -50,10 +50,22 @@
                     </a>
                 </div>
                 <div class="md:hidden">
-                    <button class="text-gray-700 hover:text-primary">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-primary transition-colors">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-gray-200 py-4">
+                <div class="flex flex-col space-y-4 px-4">
+                    <a href="#about" class="text-gray-700 hover:text-primary transition-colors font-semibold py-2 border-b border-gray-100">About</a>
+                    <a href="#services" class="text-gray-700 hover:text-primary transition-colors font-semibold py-2 border-b border-gray-100">Services</a>
+                    <a href="#products" class="text-gray-700 hover:text-primary transition-colors font-semibold py-2 border-b border-gray-100">Products</a>
+                    <a href="#industries" class="text-gray-700 hover:text-primary transition-colors font-semibold py-2 border-b border-gray-100">Industries</a>
+                    <a href="#contact" class="text-gray-700 hover:text-primary transition-colors font-semibold py-2">Contact</a>
+                </div>
+            </div>
             </div>
         </div>
     </nav>
@@ -662,8 +674,44 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
+                    // Close mobile menu after clicking a link
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        // Change icon back to bars
+                        const button = document.getElementById('mobile-menu-button');
+                        const icon = button.querySelector('i');
+                        icon.className = 'fas fa-bars text-xl';
+                    }
                 }
             });
+        });
+
+        // Mobile menu toggle functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuIcon = mobileMenuButton.querySelector('i');
+
+        mobileMenuButton.addEventListener('click', function() {
+            if (mobileMenu.classList.contains('hidden')) {
+                // Show menu
+                mobileMenu.classList.remove('hidden');
+                // Change icon to close
+                mobileMenuIcon.className = 'fas fa-times text-xl';
+            } else {
+                // Hide menu
+                mobileMenu.classList.add('hidden');
+                // Change icon back to bars
+                mobileMenuIcon.className = 'fas fa-bars text-xl';
+            }
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+                mobileMenuIcon.className = 'fas fa-bars text-xl';
+            }
         });
     </script>
 </body>
