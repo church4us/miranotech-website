@@ -36,7 +36,7 @@
   <text x="60" y="25" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1e40af">
     Mirano
   </text>
-  <text x="60" y="45" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#f59e0b">
+  <text x="133" y="45" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#f59e0b">
     Tech
   </text>
   
@@ -45,4 +45,5 @@
     Innovative Technology Solutions
   </text>
 </svg>
+
 
