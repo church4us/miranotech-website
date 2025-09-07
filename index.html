@@ -26,6 +26,7 @@
           }
         }"></script>  
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LcOyL0rAAAAABuiHPHwN7s5WQcZ7Xk0o_N-6t3Z"></script>
 </head>
 <body class="bg-gray-50">
     <!-- Navigation -->
@@ -504,8 +505,7 @@
         </div>
     </section>
 
-    <!-- Testimonials Section - Commented out for future use -->
-    <!--
+
     <section class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -541,7 +541,7 @@
             </div>
         </div>
     </section>
-    -->
+
 
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-gray-900 text-white">
@@ -597,7 +597,7 @@
                 
                 <div class="bg-gray-800 p-8 rounded-lg">
                     <h3 class="text-xl font-semibold mb-6">Send us a Message</h3>
-                    <form class="space-y-4" action="https://api.staticforms.xyz/submit"
+                    <form id="contact-form" class="space-y-4" action="https://api.staticforms.xyz/submit"
                     method="POST">
                         <input type="hidden" name="apiKey" value="sf_90ng54nm4mnf41aj6efab822" >
                         <div>
@@ -609,9 +609,11 @@
                         <div>
                             <textarea rows="4" placeholder="Your Message" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:border-secondary text-white"></textarea>
                         </div>
-                        <div class="g-recaptcha" data-sitekey="6LcOyL0rAAAAABuiHPHwN7s5WQcZ7Xk0o_N-6t3Z"></div>
-                        <button type="submit" class="w-full bg-secondary hover:bg-amber-600 text-white py-3 rounded-lg font-semibold transition-colors">
-                            Send Message
+                        
+                        <button data-sitekey="6LcOyL0rAAAAABuiHPHwN7s5WQcZ7Xk0o_N-6t3Z"
+                                data-callback='onSubmit'
+                                data-action='submit' class="g-recaptcha w-full bg-secondary hover:bg-amber-600 text-white py-3 rounded-lg font-semibold transition-colors">
+                                Send Message
                         </button>
                     </form>
                 </div>
@@ -710,6 +712,12 @@
                 mobileMenuIcon.className = 'fas fa-bars text-xl';
             }
         });
+    </script>
+    <!-- Replace the variables below. -->
+    <script>
+      function onSubmit(token) {
+        document.getElementById("contact-form").submit();
+      }
     </script>
 </body>
 </html>
